@@ -26,7 +26,7 @@ window.Player = (function() {
 	};
 
 	Player.prototype.onFrame = function(delta) {
-		if (Controls.keys.right) {
+		/*if (Controls.keys.right) {
 			this.pos.x += delta * SPEED;
 		}
 		if (Controls.keys.left) {
@@ -34,10 +34,12 @@ window.Player = (function() {
 		}
 		if (Controls.keys.down) {
 			this.pos.y += delta * SPEED;
+		}*/
+		if (Controls.keys.space) {
+			this.pos.y -= delta * (SPEED * 3);
 		}
-		if (Controls.keys.up) {
-			this.pos.y -= delta * SPEED;
-		}
+		//Turn this on for the game to work!
+		this.pos.y += delta * SPEED;
 
 		this.checkCollisionWithBounds();
 

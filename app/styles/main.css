@@ -4,14 +4,55 @@
 	left: 0;
 	width: 5em;
 	height: 5em;
-	background-image: url(../images/Copter.png);
+	background-image: url(../images/RobotFly.png);
 	background-repeat: no-repeat;
-	animation: fly .8s steps(5) alternate infinite;
+	animation: fly .8s steps(9) infinite;
 }
 
 @keyframes fly {
-   100% { background-position: -240px; }
+   100% { background-position: -429px; }
 }
+
+.Ground {
+	position: absolute;
+	bottom: 0;
+	right: 0;
+	width: 100%;
+	height: 3em;
+	background-image: url(../images/Ground.png);
+	background-repeat: repeat-x;
+	background-size: auto 100%;
+	z-index: 1;
+	animation: animatedGround 10s linear infinite;
+}
+
+@keyframes animatedGround {
+	from { background-position: 100% 0; }
+	to { background-position: 0 0; }
+}
+
+.Obstacle {
+	z-index: 2;
+}
+
+.Obstacle.hidden {
+	display: none;
+}
+
+.Obstacle .topHalf {
+	background: url('http://s21.postimg.org/kyr2rnpzr/pipe.png') bottom;
+	position: absolute;
+	top: 0;
+	width: 100%;
+}
+
+.Obstacle .bottomHalf {
+	background: url('http://s21.postimg.org/kyr2rnpzr/pipe.png') top;
+	position: absolute;
+	bottom: 0;
+	width: 100%;
+}
+
 
 .Scoreboard {
 	position: absolute;

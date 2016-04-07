@@ -7,10 +7,10 @@ window.Controls = (function() {
      */
     var KEYS = {
         32: 'space',
-        37: 'left',
+        //37: 'left',
         38: 'up',
-        39: 'right',
-        40: 'down'
+        //39: 'right',
+        //40: 'down'
     };
 
     /**

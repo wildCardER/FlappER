@@ -7,6 +7,10 @@ window.Game = (function() {
 	 * @param {Element} el jQuery element containing the game.
 	 * @constructor
 	 */
+
+	var ObstacleId = 0;
+	var gapHeight = 120;
+
 	var Game = function(el) {
 		this.el = el;
 		this.player = new window.Player(this.el.find('.Player'), this);
@@ -25,7 +29,6 @@ window.Game = (function() {
 		if (!this.isPlaying) {
 			return;
 		}
-
 		// Calculate how long since last frame in seconds.
 		var now = +new Date() / 1000,
 				delta = now - this.lastFrame;
@@ -48,6 +51,8 @@ window.Game = (function() {
 		this.lastFrame = +new Date() / 1000;
 		window.requestAnimationFrame(this.onFrame);
 		this.isPlaying = true;
+		spawnObstacle();
+		moveObstacles();
 	};
 
 	/**
@@ -75,6 +80,25 @@ window.Game = (function() {
 				});
 	};
 
+	var spawnObstacle = function(){
+		ObstacleId++;
+		var ObstacleTopHeight = Math.floor(Math.random() * (window.height() - 250)) + 50;
+		var ObstacleBottomHeight = window.height() - (ObstacleTopHeight + gapHeight);
+		var Obstacle = '<div class="pipe" pipe-id="' + ObstacleId + '"><div style="height: ' + ObstacleTopHeight + 'px" class="topHalf"></div><div style="height:' + ObstacleBottomHeight + 'px" class="bottomHalf"></div></div>';
+		window.append(Obstacle);
+	};
+/*
+	var deleteObstacle = function(){
+		$('.window .Obstacle').first().remove();
+	};
+*/
+	var moveObstacles = function (){
+		$('.Obstacle').each(function(){
+			$(this).animate({
+				right: '+=160px'
+			}, 1300, 'linear');
+		});
+	};
 	/**
 	 * Some shared constants.
 	 */
